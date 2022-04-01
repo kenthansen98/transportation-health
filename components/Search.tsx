@@ -15,10 +15,7 @@ const Search = () => {
                 onSubmit={(e) => {
                     e.preventDefault();
                     if (searchText.length > 0) {
-                        router.push({
-                            pathname: `/${searchText}`,
-                            query: { searchTerm: searchText },
-                        });
+                        router.push(`/${searchText}`);
                     }
                 }}
             >
