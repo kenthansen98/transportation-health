@@ -16,7 +16,7 @@ const Search = () => {
                     e.preventDefault();
                     if (searchText.length > 0) {
                         router.push({
-                            pathname: "/search",
+                            pathname: `/${searchText}`,
                             query: { searchTerm: searchText },
                         });
                     }

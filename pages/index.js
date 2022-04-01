@@ -1,5 +1,5 @@
-import Layout from "../components/Layout.tsx";
-import Search from "../components/Search.tsx";
+import Layout from "../components/Layout";
+import Search from "../components/Search";
 
 export default function Home() {
     return (
