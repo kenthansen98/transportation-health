@@ -13,7 +13,10 @@ const City: React.FC<Props> = ({ cityData }) => {
             <h1>{cityData[0].city_name}</h1>
             {cityData.map((metric, i) => (
                 <div key={i}>
-                    {metric.metric_name}: {metric.est}
+                    {metric.metric_name}: {metric.est}<br/>
+                    Walk Score: {metric.walk_score}<br/>
+                    Transit Score: {metric.transit_score}<br/>
+                    Bike Score: {metric.bike_score}<br/>
                 </div>
             ))}
         </Layout>

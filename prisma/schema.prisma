@@ -21,4 +21,7 @@ model City {
   population Int
   lat Float
   lon Float
+  walk_score Float?
+  transit_score Float?
+  bike_score Float?
 }
