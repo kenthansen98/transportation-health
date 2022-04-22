@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Layout: React.FC = ({ children }) => {
     return (
-        <div className="bg-gradient-to-br from-purple-400 to-cyan-800">
-            <div className="container mx-auto flex flex-col h-screen">
+        <div className="bg-gradient-to-b from-purple-400 to-cyan-800">
+            <div className="mx-auto flex flex-col h-screen">
                 <Head>
                     <title>Transportation | Health</title>
                     <meta
