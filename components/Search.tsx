@@ -8,7 +8,7 @@ const Search = () => {
     return (
         <div className="self-center my-48 w-3/4 text-center">
             <h3 className="text-lg text-slate-900 font-mono">
-                Find transportation and health data for your city:{" "}
+                Find transportation and health data for US cities:{" "}
             </h3>
             <form
                 className="flex flex-row place-content-center pt-8"

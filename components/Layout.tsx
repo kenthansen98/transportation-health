@@ -4,7 +4,7 @@ import Link from "next/link";
 const Layout: React.FC = ({ children }) => {
     return (
         <div className="bg-gradient-to-b from-purple-400 to-cyan-800">
-            <div className="mx-auto flex flex-col h-screen">
+            <div className="mx-auto flex flex-col h-screen snap-y snap-mandatory overflow-scroll">
                 <Head>
                     <title>Transportation | Health</title>
                     <meta

@@ -12,8 +12,9 @@ datasource db {
 
 model City {
   id String @default(cuid()) @id
-  city_name String
-  state_abbr String
+  city_id Int
+  abbr String
+  city String
   metric_name String
   group_name String
   est Float

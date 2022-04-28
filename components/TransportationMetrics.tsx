@@ -1,0 +1,73 @@
+interface Props {
+    city: string;
+    walkScore: number;
+    transitScore: number;
+    bikeScore: number;
+}
+
+const TransportationMetrics: React.FC<Props> = ({
+    city,
+    walkScore,
+    transitScore,
+    bikeScore,
+}) => {
+    const getScoreMeaning = (name: string, score: number) => {
+        const scoreMapping = {
+            "Walk Score": {
+                90: "Daily errands do not require a car.",
+                70: "Most errands can be accomplished on foot.",
+                50: "Some errands can be accomplished on foot.",
+                25: "Most errands require a car.",
+                0: "Almost all errands require a car."
+            },
+            "Transit Score": {
+                90: "World-class public transportation.",
+                70: "Transit is convenient for most trips.",
+                50: "Many nearby public transportation options.",
+                25: "A few nearby public transportation options.",
+                0: "It is possible to get on a bus.",
+            },
+            "Bike Score": {
+                90: "Daily errands can be accomplished on a bike.",
+                70: "Biking is convenient for most trips.",
+                50: "Some bike infrastructure.",
+                25: "Minimal bike infrastructure.",
+                0: "Minimal bike infrastructure.",
+            }
+        };
+
+        const scoreMeaning = score >= 90 ? 90 : score >= 70 ? 70 : score >= 50 ? 50 : score >= 25 ? 25 : 0;
+        return scoreMapping[name][scoreMeaning];
+    };
+
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-purple-400 to-cyan-800 snap-start">
+            <div className="container mx-auto mt-14 text-center flex flex-col">
+                <h3 className="font-mono text-xl font-medium">
+                    How much do people in {city} get around using active
+                    transportation modes?
+                </h3>
+                <div className="grid grid-cols-1 gap-8 mt-24 w-1/5">
+                    {[
+                        { name: "Walk Score", score: walkScore },
+                        { name: "Transit Score", score: transitScore },
+                        { name: "Bike Score", score: bikeScore },
+                    ].map((score, i) => (
+                        <div
+                            key={i}
+                            className="bg-slate-100 shadow-md p-3 md:p-6 rounded-md"
+                        >
+                            <span className="font-semibold">{score.name}</span>
+                            <br />
+                            {score.score}
+                            <br />
+                            {getScoreMeaning(score.name, score.score)}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default TransportationMetrics;
