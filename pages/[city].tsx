@@ -34,11 +34,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const cityNames = await prisma.city.findMany({
         select: {
             city: true,
+            state: true,
         },
     });
 
     const paths = cityNames.map((name) => ({
-        params: { city: name.city },
+        params: { city: name.city + ", " + name.state },
     }));
 
     return {
@@ -51,7 +52,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { city } = params;
 
     const rawCityData = await prisma.city.findMany({
-        where: { city: city as string },
+        where: {
+            city: (city as string).split(", ")[0],
+            state: (city as string).split(", ")[1],
+        },
     });
 
     const cardio = rawCityData.filter(
