@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Layout from "../components/Layout";
 import Search from "../components/Search";
 import prisma from "../lib/prisma";
@@ -12,9 +13,14 @@ interface Props {
 
 const Home: React.FC<Props> = ({ cityNames }) => {
     return (
-        <Layout>
-            <Search cityNames={cityNames} />
-        </Layout>
+        <>
+            <Head>
+                <title>Transportation | Health</title>
+            </Head>
+            <Layout>
+                <Search cityNames={cityNames} />
+            </Layout>
+        </>
     );
 };
 
@@ -30,7 +36,7 @@ export const getStaticProps: GetStaticProps = async () => {
         const multiple = !cityExists.has(city.city);
         cityExists.add(city.city);
         return multiple;
-    })
+    });
 
     return {
         props: { cityNames: uniqueCities },

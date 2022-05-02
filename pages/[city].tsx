@@ -1,5 +1,6 @@
 import { City } from "@prisma/client";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import CityHeader from "../components/CityHeader";
 import HealthMetrics from "../components/HealthMetrics";
 import Layout from "../components/Layout";
@@ -13,20 +14,27 @@ interface Props {
 
 const City: React.FC<Props> = ({ cityData, cardio }) => {
     return (
-        <Layout>
-            <CityHeader
-                city={cityData[0].city}
-                state={cityData[0].state}
-                population={cityData[0].population}
-            />
-            <HealthMetrics cityData={cityData} cardio={cardio} />
-            <TransportationMetrics
-                city={cityData[0].city}
-                walkScore={cityData[0].walk_score}
-                transitScore={cityData[0].transit_score}
-                bikeScore={cityData[0].bike_score}
-            />
-        </Layout>
+        <>
+            <Head>
+                <title>{cityData[0].city}</title>
+            </Head>
+            <Layout>
+                <CityHeader
+                    city={cityData[0].city}
+                    state={cityData[0].state}
+                    population={cityData[0].population}
+                />
+                <HealthMetrics cityData={cityData} cardio={cardio} />
+                <TransportationMetrics
+                    city={cityData[0].city}
+                    walkScore={cityData[0].walk_score}
+                    transitScore={cityData[0].transit_score}
+                    bikeScore={cityData[0].bike_score}
+                    lat={cityData[0].lat}
+                    lon={cityData[0].lon}
+                />
+            </Layout>
+        </>
     );
 };
 
